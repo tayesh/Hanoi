@@ -20,16 +20,18 @@ const towerC = {
 }
 const hanoiparam = {
     inpo: towerA,
-    left: towerA,
-    middle: towerB,
-    right: towerC,
+    arrays:{
+        left: towerA,   
+        middle: towerB,
+        right: towerC,
+    },
     fipo:towerC
 }
 
 function displayall() {
-    display(hanoiparam.left.array,hanoiparam.left.label);
-    display(hanoiparam.middle.array,hanoiparam.middle.label);
-    display(hanoiparam.right.array,hanoiparam.right.label);
+    display(hanoiparam.arrays.left.array,hanoiparam.arrays.left.label);
+    display(hanoiparam.arrays.middle.array,hanoiparam.arrays.middle.label);
+    display(hanoiparam.arrays.right.array,hanoiparam.arrays.right.label);
 }
 displayall();
 
@@ -69,7 +71,21 @@ async function hanoi(n, P, Q, R) {
 
 
 async function clickk() {
-    await hanoi(hanoiparam.inpo.array.length, hanoiparam.inpo, hanoiparam.middle, hanoiparam.fipo);
+    let to;
+    let aux;
+    for (const key in hanoiparam.arrays) {
+        if (hanoiparam.arrays[key].array.length === 0) {
+            if (!to) {
+                to = hanoiparam.arrays[key];
+                console.log(to);
+            } else {
+                aux = hanoiparam.arrays[key];
+                console.log(aux);
+            }
+        }
+    }
+
+    await hanoi(hanoiparam.inpo.array.length, hanoiparam.inpo ,to,aux);
 }
 
 function discSetup(a) {
@@ -93,24 +109,24 @@ document.getElementById('option').addEventListener('change', function () {
 });
 document.getElementById('option2').addEventListener('change', function () {
     const selectedOption = this.value;
-    hanoiparam.left.array=hanoiparam.inpo.array;
-        hanoiparam.inpo=hanoiparam.left;
-        hanoiparam.middle.array = [];
-        hanoiparam.right.array = [];
+    hanoiparam.arrays.left.array=hanoiparam.inpo.array;
+        hanoiparam.inpo=hanoiparam.arrays.left;
+        hanoiparam.arrays.middle.array = [];
+        hanoiparam.arrays.right.array = [];
         console.log(hanoiparam);
         if (selectedOption === 'Middle') {
-            hanoiparam.middle.array = hanoiparam.inpo.array;
-            hanoiparam.inpo = hanoiparam.middle;
-            hanoiparam.left.array = [];
-            hanoiparam.right.array = [];
+            hanoiparam.arrays.middle.array = hanoiparam.inpo.array;
+            hanoiparam.inpo = hanoiparam.arrays.middle;
+            hanoiparam.arrays.left.array = [];
+            hanoiparam.arrays.right.array = [];
             
         }
         if (selectedOption === 'Right') {
-            hanoiparam.right.array = hanoiparam.inpo.array;
-            hanoiparam.inpo = hanoiparam.right;
-            hanoiparam.left.array = [];
-            hanoiparam.middle.array = [];
-            hanoiparam.fipo=hanoiparam.left;
+            hanoiparam.arrays.right.array = hanoiparam.inpo.array;
+            hanoiparam.inpo = hanoiparam.arrays.right;
+            hanoiparam.arrays.left.array = [];
+            hanoiparam.arrays.middle.array = [];
+            hanoiparam.fipo=hanoiparam.arrays.left;
             
         }
         displayall();
@@ -119,24 +135,24 @@ document.getElementById('option2').addEventListener('change', function () {
 });
 // ocument.getElementById('option2').addEventListener('change', function () {
 //     const selectedOption = this.value;
-//     hanoiparam.left.array=hanoiparam.inpo.array;
-//     hanoiparam.inpo=hanoiparam.left;
-//     hanoiparam.middle.array = [];
-//     hanoiparam.right.array = [];
+//     hanoiparam.arrays.left.array=hanoiparam.inpo.array;
+//     hanoiparam.inpo=hanoiparam.arrays.left;
+//     hanoiparam.arrays.middle.array = [];
+//     hanoiparam.arrays.right.array = [];
 //     console.log(hanoiparam);
 //     if (selectedOption === 'Middle') {
-//         hanoiparam.middle.array = hanoiparam.inpo.array;
-//         hanoiparam.inpo = hanoiparam.middle;
-//         hanoiparam.left.array = [];
-//         hanoiparam.right.array = [];
+//         hanoiparam.arrays.middle.array = hanoiparam.inpo.array;
+//         hanoiparam.inpo = hanoiparam.arrays.middle;
+//         hanoiparam.arrays.left.array = [];
+//         hanoiparam.arrays.right.array = [];
         
 //     }
 //     if (selectedOption === 'Right') {
-//         hanoiparam.right.array = hanoiparam.inpo.array;
-//         hanoiparam.inpo = hanoiparam.right;
-//         hanoiparam.left.array = [];
-//         hanoiparam.middle.array = [];
-//         hanoiparam.fipo=hanoiparam.left;
+//         hanoiparam.arrays.right.array = hanoiparam.inpo.array;
+//         hanoiparam.inpo = hanoiparam.arrays.right;
+//         hanoiparam.arrays.left.array = [];
+//         hanoiparam.arrays.middle.array = [];
+//         hanoiparam.fipo=hanoiparam.arrays.left;
         
 //     }
 //     displayall();
