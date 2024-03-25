@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.8.0/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div>
+        <h1 class="text-3xl text-center my-10">Tower of Hanoi </h1>
+        <div id="pg" class="bg-red-300 lg:h-[500px] h-[300px] lg:mx-32 mt-10 rounded-2xl grid grid-cols-3 p-2 lg:p-10 lg:gap-5 gap-1">
+            <div id="A" class="bg-gray-300 rounded-xl lg:p-5 p-1 flex flex-col-reverse justify-start lg:gap-5 gap-1 items-center">
+            
+            </div>
+            <div id="B" class="bg-gray-300 rounded-xl lg:p-5 p-1 flex flex-col-reverse justify-start lg:gap-5 gap-1 items-center">
+
+            </div>
+            <div id="C" class="bg-gray-300 rounded-xl lg:p-5 p-1 flex flex-col-reverse justify-start lg:gap-5 gap-1 items-center">
+
+            </div>
+
+        </div>
+    </div>
+    <div class="flex justify-center mt-5">
+        <select id="option" class="select w-full max-w-xs">
+            <option disabled selected>Choose number of Disc</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+          </select>
+          <select id="option2" class="select w-full max-w-xs">
+            <option disabled selected>Choose Starting column</option>
+            <option>Left</option>
+            
+            <option>Middle</option>
+            
+            <option>Right</option>
+           
+          </select>
+        <button onclick="clickk()" class="btn"> click</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
